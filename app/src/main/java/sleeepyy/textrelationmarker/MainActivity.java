@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button fileOpenBtn = (Button)findViewById(R.id.open_file_button);
+        Button fileOpenBtn = findViewById(R.id.open_file_button);
         fileOpenBtn.setOnClickListener(new OpenFileAction());
 
     }
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
         menu.removeItem(R.id.gb2312);
         menu.removeItem(R.id.utf8);
+        menu.removeItem(R.id.adjust);
         return true;
     }
 
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(
                                     DialogInterface dialoginterface, int i) {
-                                // ��ť�¼�
                             }
                         }).create();
         dialog.show();

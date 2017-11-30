@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TxtReader</string>
+    <string name="app_name">TextRelationMarker</string>
     <string name="code_utf8">UTF-8</string>
     <string name="code_gb2312">GB2312</string>
-    <string name="about">关于</string>
-    <string name="swich_code">点击Menu菜单切换合适编码</string>
-    <string name="aboutTitle">凡尘一滴工作室</string>
-    <string name="aboutInfo">做最实用的软件精品</string>
-    <string name="aboutOK">确定</string>
-    <string name="open_button">打开文件</string>
+    <string name="about">About</string>
+    <string name="switch_code">点击Menu菜单切换合适编码</string>
+    <string name="aboutTitle">Text Relation Marker</string>
+    <string name="aboutInfo">User-Friendly Text Reader And Marker Designed By Sleeepyy.</string>
+    <string name="aboutOK">GOT IT</string>
+    <string name="open_button">Open File</string>
+    <string name="adjust">阅读设置</string>
 </resources>

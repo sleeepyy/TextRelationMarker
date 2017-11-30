@@ -28,6 +28,10 @@ import android.widget.ListView;
 
 public class ListFileActivity extends ListActivity {
 
+    private List<File> fileNameList;
+    private Bundle bundle;
+    private String fileNameKey = "fileName";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,8 +141,4 @@ public class ListFileActivity extends ListActivity {
         return fnList.toArray(new String[0]);
     }
 
-
-    private List<File> fileNameList;
-    private Bundle bundle;
-    private String fileNameKey = "fileName";
 }

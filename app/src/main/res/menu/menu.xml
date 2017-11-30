@@ -4,6 +4,8 @@
 		android:icon="@android:drawable/ic_menu_edit" />
 	<item android:id="@+id/gb2312" android:title="@string/code_gb2312"
 		android:icon="@android:drawable/ic_menu_edit" />
+	<item android:id="@+id/adjust" android:title="@string/adjust"
+		android:icon="@android:drawable/ic_menu_edit" />
 	<item android:id="@+id/about" android:title="@string/about"
 		android:icon="@android:drawable/ic_menu_info_details" />
 </menu>

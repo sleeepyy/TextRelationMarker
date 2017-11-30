@@ -1,7 +1,7 @@
 package sleeepyy.textrelationmarker;
 
 
-import android.app.Activity;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,7 +22,7 @@ import android.widget.TextView;
  * Created by sleepy on 2017/11/28.
  */
 
-public class ViewFileActivity extends Activity {
+public class ViewFileActivity extends AppCompatActivity {
 
     private String filenameString;
     private static final String gb2312 = "GB2312";
@@ -62,6 +63,8 @@ public class ViewFileActivity extends Activity {
             case R.id.about:
                 doAbout();
                 break;
+            case R.id.adjust:
+
             default:
                 break;
         }
@@ -99,7 +102,7 @@ public class ViewFileActivity extends Activity {
                 return null;
             }
             while (in.ready()) {
-                sBuffer.append(in.readLine() + "\n");
+                sBuffer.append(in.readLine()).append("\n");
             }
             in.close();
             return sBuffer.toString();
