@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".ListFileActivity" />
         <activity android:name=".ViewFileActivity" />
+        <activity android:name=".BigBangActivity" />
     </application>
 
 </manifest>

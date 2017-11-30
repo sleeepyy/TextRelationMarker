@@ -13,6 +13,7 @@ import java.net.URL;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -109,6 +110,12 @@ public class ViewFileActivity extends AppCompatActivity {
                 break;
             case R.id.adjust:
                 adjust_page.setVisibility(View.VISIBLE);
+            case R.id.mark:
+                Intent intent = new Intent(ViewFileActivity.this, BigBangActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("content", content);
+                intent.putExtras(bundle);
+                startActivity(intent);
             default:
                 break;
         }
@@ -210,7 +217,7 @@ public class ViewFileActivity extends AppCompatActivity {
                 HttpURLConnection conn = (HttpURLConnection) aUrl.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setConnectTimeout(8000);//设置连接超时
-                conn.setReadTimeout(8000);
+                conn.setReadTimeout(30000);
                 conn.setRequestProperty("connection", "Keep-Alive");
                 InputStream is = conn.getInputStream();
                 Log.i("http code", String.valueOf(conn.getResponseCode()));
