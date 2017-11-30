@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/open_button"
         />
+    <Button
+        android:id = "@+id/open_url_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_url_button"
+    />
 </LinearLayout>

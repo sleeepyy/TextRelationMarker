@@ -5,12 +5,40 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 	
-	<ScrollView android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+	<ScrollView
+        android:layout_width="fill_parent"
+		android:layout_height="0dp"
+        android:layout_weight="1">
 		<TextView android:id="@+id/view_contents"
-			android:layout_width="fill_parent"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:textSize="25sp">
 		</TextView>
 	</ScrollView>
+	<LinearLayout
+		android:id="@+id/adjust_page"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/add_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_size_button"/>
+
+        <Button
+            android:id="@+id/minus_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus_size_button"/>
+        <Button
+            android:id="@+id/adjust_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/adjust_done"/>
+
+
+    </LinearLayout>
+
+
 </LinearLayout>

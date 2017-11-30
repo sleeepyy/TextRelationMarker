@@ -18,8 +18,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-
+import android.widget.Toast;
 
 
 /**
@@ -29,8 +30,9 @@ import android.widget.ListView;
 public class ListFileActivity extends ListActivity {
 
     private List<File> fileNameList;
+    private String UrlKey = "url";
     private Bundle bundle;
-    private String fileNameKey = "fileName";
+    private String fileNameKey = "path";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +41,25 @@ public class ListFileActivity extends ListActivity {
         Log.i("info", "init file list");
         initFileList();
         Log.i("info", "init file list done");
+
     }
 
     private void initFileList()
     {
         File path = android.os.Environment.getRootDirectory();
+//        File path = new File(getString(R.string.init_dir));
         Log.i("info", path.toString());
+
         File[] f = path.listFiles();
-        Log.i("info", Arrays.toString(f));
-        fill(f);
+        if(f == null || f.length==0){
+            Toast.makeText(this, "This directory is empty...", Toast.LENGTH_SHORT).show();
+            Log.i("info..", "eeeee");
+            this.onBackPressed();
+        }
+        else{
+            Log.i("info", Arrays.toString(f));
+            fill(f);
+        }
     }
 
     @Override
@@ -133,6 +145,7 @@ public class ListFileActivity extends ListActivity {
 
     private String[] fileToStrArr(List<File> fl)
     {
+
         ArrayList<String> fnList = new ArrayList<>();
         for (int i = 0; i < fl.size(); i++) {
             String nameString = fl.get(i).getName();
