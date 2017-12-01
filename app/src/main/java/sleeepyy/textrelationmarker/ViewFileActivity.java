@@ -113,6 +113,7 @@ public class ViewFileActivity extends AppCompatActivity {
             case R.id.mark:
                 Intent intent = new Intent(ViewFileActivity.this, BigBangActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putString("id", url==null?file_path:url);
                 bundle.putString("content", content);
                 intent.putExtras(bundle);
                 startActivity(intent);

@@ -44,18 +44,24 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
+        <!--<Button-->
+            <!--android:text="取消"-->
+            <!--android:id="@+id/btn_cancel"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content" />-->
         <Button
-            android:text="取消"
-            android:id="@+id/btn_cancel"
+            android:text="Mark it"
+            android:id="@+id/btn_mark"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
-        <Button
-            android:text="搜索"
-            android:id="@+id/btn_search"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:visibility="gone"
-            android:layout_height="wrap_content" />
+        <!--<Button-->
+            <!--android:text="搜索"-->
+            <!--android:id="@+id/btn_search"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_height="wrap_content" />-->
     </LinearLayout>
 </RelativeLayout>
