@@ -56,6 +56,12 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
+        <Button
+            android:text="Finished!"
+            android:id="@+id/btn_finish"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
         <!--<Button-->
             <!--android:text="搜索"-->
             <!--android:id="@+id/btn_search"-->

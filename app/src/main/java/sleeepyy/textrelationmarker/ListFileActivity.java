@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 
 /**
+ * TextRelationMarker
  * Created by sleepy on 2017/11/28.
  */
 
@@ -46,9 +47,10 @@ public class ListFileActivity extends ListActivity {
 
     private void initFileList()
     {
-        File path = android.os.Environment.getRootDirectory();
+//        File path = android.os.Environment.getRootDirectory();
 //        File path = new File(getString(R.string.init_dir));
-        Log.i("info", path.toString());
+        File path = getFilesDir();
+        Log.i("info", path.getAbsolutePath());
 
         File[] f = path.listFiles();
         if(f == null || f.length==0){

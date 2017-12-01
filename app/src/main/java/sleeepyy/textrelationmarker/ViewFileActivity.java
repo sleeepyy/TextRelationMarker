@@ -38,7 +38,7 @@ public class ViewFileActivity extends AppCompatActivity {
     private String url = null;
     private static final String gb2312 = "GB2312";
     private static final String utf8 = "UTF-8";
-    private static final String defaultCode = gb2312;
+    private static final String defaultCode = utf8;
     private String content = null;
     private LinearLayout adjust_page;
     TextView tv;
