@@ -1,6 +1,7 @@
 package sleeepyy.textrelationmarker;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -99,7 +102,33 @@ public class BigBangActivity extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                Log.i("jsonjsonjson", jsonData.toString());
+                try {
+
+                    Log.i("jsonjsonjson", jsonData.toString(4));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                File dir = new File(getFilesDir()+"/json");
+                if(!dir.exists()){
+                    boolean success = dir.mkdir();
+                    if(!success){
+                        Log.e("error", "create dir not successful.");
+                    }
+                }
+                try {
+                    String[] names = id.split("/|\\.");
+                    String part_name = names[names.length-2];
+                    String file_name = "sentence_" + String.valueOf(pointer)+"_" + part_name+".json";
+                    Log.i("filesdir", getFilesDir().toString());
+                    FileOutputStream outputStream = new FileOutputStream(new File(getFilesDir().toString()+"/json", file_name));
+                    outputStream.write(jsonData.toString(4).getBytes());
+                    outputStream.close();
+
+                    Toast.makeText(BigBangActivity.this, "Json Saved to "+file_name, Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
         });
 
@@ -114,7 +143,7 @@ public class BigBangActivity extends AppCompatActivity {
                 } else {
                     render();
                 }
-                Log.i("json", jsonData.toString());
+//                Log.i("json", jsonData.toString(4));
             }
         });
 
@@ -191,6 +220,15 @@ public class BigBangActivity extends AppCompatActivity {
 //                                        full_label = categories[label_i] + "/" + labels[label_i][label_j] +"/"+self_label;
                                         Toast.makeText(BigBangActivity.this, full_label, Toast.LENGTH_SHORT).show();
                                         updateJson();
+
+                                        int count = mAutoLayout.getChildCount();
+                                        for (int _i = 0; _i < count; _i++) {
+                                            AppCompatCheckBox checkBox = (AppCompatCheckBox) mAutoLayout.getChildAt(_i);
+                                            checkBox.setChecked(false);
+
+                                        }
+
+
                                     }
                                 });
                                 selfMarkerDialog.show();

@@ -137,7 +137,7 @@ public class ListFileActivity extends ListActivity {
         }
         else {
             String fileName = file.getName().toLowerCase();
-            if (fileName.endsWith(".txt")) {
+            if (fileName.endsWith(".txt") || fileName.endsWith(".json")) {
                 return true;
             }
         }
