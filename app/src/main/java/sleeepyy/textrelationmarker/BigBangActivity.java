@@ -96,36 +96,36 @@ public class BigBangActivity extends AppCompatActivity {
         mark_finished.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     jsonData.put("Entities", jsonEntities);
                     jsonData.put("Relations", jsonRelations);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
 
                     Log.i("jsonjsonjson", jsonData.toString(4));
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-                File dir = new File(getFilesDir()+"/json");
-                if(!dir.exists()){
+                File dir = new File(getFilesDir() + "/json");
+                if (!dir.exists()) {
                     boolean success = dir.mkdir();
-                    if(!success){
+                    if (!success) {
                         Log.e("error", "create dir not successful.");
                     }
                 }
                 try {
                     String[] names = id.split("/|\\.");
-                    String part_name = names[names.length-2];
-                    String file_name = "sentence_" + String.valueOf(pointer)+"_" + part_name+".json";
+                    String part_name = names[names.length - 2];
+                    String file_name = "sentence_" + String.valueOf(pointer) + "_" + part_name + ".json";
                     Log.i("filesdir", getFilesDir().toString());
-                    FileOutputStream outputStream = new FileOutputStream(new File(getFilesDir().toString()+"/json", file_name));
+                    FileOutputStream outputStream = new FileOutputStream(new File(getFilesDir().toString() + "/json", file_name));
                     outputStream.write(jsonData.toString(4).getBytes());
                     outputStream.close();
 
-                    Toast.makeText(BigBangActivity.this, "Json Saved to "+file_name, Toast.LENGTH_LONG).show();
-                }catch (Exception e){
+                    Toast.makeText(BigBangActivity.this, "Json Saved to " + file_name, Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -163,12 +163,12 @@ public class BigBangActivity extends AppCompatActivity {
                 for (int i = 0; i < count; i++) {
                     AppCompatCheckBox checkBox = (AppCompatCheckBox) mAutoLayout.getChildAt(i);
                     Log.i("check", String.valueOf(checkBox.isChecked()));
-                    if(lastCheckBox!=null && !lastCheckBox.isChecked() && checkBox.isChecked()){
+                    if (lastCheckBox != null && !lastCheckBox.isChecked() && checkBox.isChecked()) {
                         builder = secondBuilder;
-                        if(start_2 == 0)start_2 = i;
+                        if (start_2 == 0) start_2 = i;
                     }
                     if (checkBox.isChecked()) {
-                        if(start_1==0 && start_2==0)start_1 = i;
+                        if (start_1 == 0 && start_2 == 0) start_1 = i;
                         builder.append(checkBox.getText().toString());
                     }
                     lastCheckBox = checkBox;
@@ -253,17 +253,13 @@ public class BigBangActivity extends AppCompatActivity {
             }
 
 
-
-
-
-
         });
 
     }
 
-    private void updateJson(){
+    private void updateJson() {
         JSONObject mark = new JSONObject();
-        if(text_2.isEmpty()){
+        if (text_2.isEmpty()) {
             Log.i("text2", "isempty");
             Log.i("info", "entity");
             try {
@@ -272,11 +268,11 @@ public class BigBangActivity extends AppCompatActivity {
                 mark.put("label", full_label);
                 Log.i("lalalalabel", full_label);
                 jsonEntities.put(mark);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        }else{
+        } else {
 
             try {
                 mark.put("em1Text", text_1);
@@ -285,7 +281,7 @@ public class BigBangActivity extends AppCompatActivity {
                 mark.put("start_2", start_2);
                 mark.put("label", full_label);
                 jsonRelations.put(mark);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -298,11 +294,11 @@ public class BigBangActivity extends AppCompatActivity {
         String line = sentences.get(pointer);
         mAutoLayout.removeAllViews();
 //        wordViewvector.clear();
-        try{
+        try {
             jsonData.put("articleId", id);
             jsonData.put("sentenceId", pointer);
             jsonData.put("sentence", line);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Log.i("line", line);

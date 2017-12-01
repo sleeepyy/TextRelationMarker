@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical">
+
     <Button
-        android:id = "@+id/open_file_button"
-        android:layout_width="fill_parent"
+        android:id="@+id/open_file_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/open_button"
-        />
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginLeft="@dimen/button_margin"
+        android:layout_marginRight="@dimen/button_margin"
+        android:layout_marginTop="@dimen/button_margin"
+        android:background="@drawable/border_line"
+        android:fontFamily="@string/font"
+        android:text="@string/open_button" />
+
     <Button
-        android:id = "@+id/open_url_button"
-        android:layout_width="fill_parent"
+        android:id="@+id/open_url_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/open_url_button"
-    />
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_marginLeft="@dimen/button_margin"
+        android:layout_marginRight="@dimen/button_margin"
+        android:layout_marginTop="@dimen/button_margin"
+        android:background="@drawable/border_line"
+        android:fontFamily="@string/font"
+        android:text="@string/open_url_button" />
 </LinearLayout>

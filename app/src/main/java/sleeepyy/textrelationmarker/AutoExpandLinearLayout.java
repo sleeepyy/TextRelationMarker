@@ -5,22 +5,29 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 /**
- * 根据按钮多少自动换行的ViewGroup
+ * TextRelationMarker
+ * Created by sleepy on 2017/11/28.
  */
+
 public class AutoExpandLinearLayout extends ViewGroup {
     private static final int MARGIN = 5;
     private int maxWidth;// 可使用的最大宽度
+
     public AutoExpandLinearLayout(Context context) {
         super(context);
     }
+
     public AutoExpandLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
     public AutoExpandLinearLayout(Context context, AttributeSet attrs,
                                   int defStyle) {
         super(context, attrs, defStyle);
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         maxWidth = MeasureSpec.getSize(widthMeasureSpec);
@@ -41,6 +48,7 @@ public class AutoExpandLinearLayout extends ViewGroup {
         }
         setMeasuredDimension(maxWidth, containorHeight);// onMeasure方法的关键代码,该句设置父容器的大小。
     }
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childCount = getChildCount();// 获取子组件数
@@ -62,7 +70,7 @@ public class AutoExpandLinearLayout extends ViewGroup {
                 row++;
                 left = 0;//每次换行后要将子组件左边“坐标”与右边“坐标”重新初始化
                 right = 0;
-                left = p + right ;
+                left = p + right;
                 right = left + width;
                 top = p * row + height * (row - 1);
                 bottom = top + height;

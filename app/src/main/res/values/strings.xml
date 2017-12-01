@@ -16,4 +16,5 @@
     <string name="init_dir">/storage/self/primary</string>
     <string name="mark">开始标记</string>
     <string name="adjust_done">Done</string>
+    <string name="font">monospace</string>
 </resources>

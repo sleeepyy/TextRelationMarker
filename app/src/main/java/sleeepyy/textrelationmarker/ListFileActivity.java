@@ -45,20 +45,18 @@ public class ListFileActivity extends ListActivity {
 
     }
 
-    private void initFileList()
-    {
+    private void initFileList() {
 //        File path = android.os.Environment.getRootDirectory();
 //        File path = new File(getString(R.string.init_dir));
         File path = getFilesDir();
         Log.i("info", path.getAbsolutePath());
 
         File[] f = path.listFiles();
-        if(f == null || f.length==0){
+        if (f == null || f.length == 0) {
             Toast.makeText(this, "This directory is empty...", Toast.LENGTH_SHORT).show();
             Log.i("info..", "eeeee");
             this.onBackPressed();
-        }
-        else{
+        } else {
             Log.i("info", Arrays.toString(f));
             fill(f);
         }
@@ -99,18 +97,15 @@ public class ListFileActivity extends ListActivity {
     }
 
 
-
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(ListFileActivity.this, ViewFileActivity.class);
         bundle = new Bundle();
         File file = fileNameList.get(position);
-        if (file.isDirectory())
-        {
+        if (file.isDirectory()) {
             File[] f = file.listFiles();
             fill(f);
-        }
-        else {
+        } else {
             bundle.putString(fileNameKey, file.getAbsolutePath());
             intent.putExtras(bundle);
             startActivityForResult(intent, 0);
@@ -130,12 +125,10 @@ public class ListFileActivity extends ListActivity {
     }
 
 
-    private boolean isValidFileOrDir(File file)
-    {
+    private boolean isValidFileOrDir(File file) {
         if (file.isDirectory()) {
             return true;
-        }
-        else {
+        } else {
             String fileName = file.getName().toLowerCase();
             if (fileName.endsWith(".txt") || fileName.endsWith(".json")) {
                 return true;
@@ -145,8 +138,7 @@ public class ListFileActivity extends ListActivity {
     }
 
 
-    private String[] fileToStrArr(List<File> fl)
-    {
+    private String[] fileToStrArr(List<File> fl) {
 
         ArrayList<String> fnList = new ArrayList<>();
         for (int i = 0; i < fl.size(); i++) {

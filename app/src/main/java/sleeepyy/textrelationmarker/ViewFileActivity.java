@@ -1,7 +1,6 @@
 package sleeepyy.textrelationmarker;
 
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,8 +53,8 @@ public class ViewFileActivity extends AppCompatActivity {
             assert bundle != null;
             file_path = bundle.getString("path");
             url = bundle.getString("url");
-            Log.i("path", file_path==null?"":file_path);
-            Log.i("url", url==null?"":url);
+            Log.i("path", file_path == null ? "" : file_path);
+            Log.i("url", url == null ? "" : url);
             refreshGUI(defaultCode);
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,16 +66,16 @@ public class ViewFileActivity extends AppCompatActivity {
         add_size.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize()+1f);
-                Log.i("info", "size:"+tv.getTextSize());
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize() + 1f);
+                Log.i("info", "size:" + tv.getTextSize());
             }
         });
         Button minus_size = findViewById(R.id.minus_size);
         minus_size.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize()-1f);
-                Log.i("info", "size:"+tv.getTextSize());
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, tv.getTextSize() - 1f);
+                Log.i("info", "size:" + tv.getTextSize());
             }
         });
         Button adjust_done = findViewById(R.id.adjust_done);
@@ -110,10 +109,11 @@ public class ViewFileActivity extends AppCompatActivity {
                 break;
             case R.id.adjust:
                 adjust_page.setVisibility(View.VISIBLE);
+                break;
             case R.id.mark:
                 Intent intent = new Intent(ViewFileActivity.this, BigBangActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("id", url==null?file_path:url);
+                bundle.putString("id", url == null ? file_path : url);
                 bundle.putString("content", content);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -135,47 +135,42 @@ public class ViewFileActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void refreshGUI(String code)
-    {
+    private void refreshGUI(String code) {
         getStringFromFile(code);
-        if(content == null){
+        if (content == null) {
             Log.i("content", "bad");
-        }
-        else{
+        } else {
             Log.i("content", content);
         }
         tv.setText(content);
     }
 
-    public void getStringFromFile(String code)
-    {
+    public void getStringFromFile(String code) {
         try {
 
-            if(file_path != null){
+            if (file_path != null) {
                 StringBuilder builder = new StringBuilder();
                 BufferedReader in;
                 FileInputStream fInputStream = new FileInputStream(file_path);
                 InputStreamReader inputStreamReader = new InputStreamReader(fInputStream, code);
-                if(!new File(file_path).exists())
-                {
-                    return ;
+                if (!new File(file_path).exists()) {
+                    return;
                 }
                 in = new BufferedReader(inputStreamReader);
                 while (in.ready()) {
                     builder.append(in.readLine()).append("\n");
                 }
                 in.close();
-                content =  builder.toString();
-            }
-            else if (url != null){
+                content = builder.toString();
+            } else if (url != null) {
                 httpThread http = new httpThread();
                 http.setaUrl(url);
                 http.setView(this);
                 http.start();
 
-                try{
+                try {
                     http.join();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -184,37 +179,25 @@ public class ViewFileActivity extends AppCompatActivity {
         }
     }
 
-
-    public byte[] readFile(String fileName) throws Exception {
-        byte[] result = null;
-        File file = new File(fileName);
-        try (FileInputStream fis = new FileInputStream(file)) {
-            result = new byte[fis.available()];
-            fis.read(result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-    class httpThread extends Thread implements Runnable{
+    class httpThread extends Thread implements Runnable {
         URL aUrl;
         ViewFileActivity activity;
 
-        public void setaUrl(String url){
+        public void setaUrl(String url) {
             try {
                 aUrl = new URL(url);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        public void setView(ViewFileActivity view_activity){
+        public void setView(ViewFileActivity view_activity) {
             activity = view_activity;
         }
 
         @Override
         public void run() {
-            try{
+            try {
                 HttpURLConnection conn = (HttpURLConnection) aUrl.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setConnectTimeout(8000);//设置连接超时
@@ -227,7 +210,7 @@ public class ViewFileActivity extends AppCompatActivity {
                 BufferedReader in = new BufferedReader(inputStreamReader);
                 String line;
                 StringBuilder builder = new StringBuilder();
-                while ((line=in.readLine())!=null) {
+                while ((line = in.readLine()) != null) {
                     builder.append(line).append("\n");
 //                    line = in.readLine();
 //                    Toast.makeText(ViewFileActivity.this, line, Toast.LENGTH_SHORT).show();
@@ -235,7 +218,7 @@ public class ViewFileActivity extends AppCompatActivity {
                 }
                 in.close();
                 activity.content = builder.toString();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
