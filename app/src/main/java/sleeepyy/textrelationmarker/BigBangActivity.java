@@ -302,11 +302,42 @@ public class BigBangActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Log.i("line", line);
-        for (char word : line.toCharArray()) {
-            BangWordView bangWordView = new BangWordView(getApplication(), String.valueOf(word));
-            mAutoLayout.addView(bangWordView);
-//            wordViewvector.add(bangWordView);
-        }
+//        for (char word : line.toCharArray()) {
+//            BangWordView bangWordView = new BangWordView(getApplication(), String.valueOf(word));
+//            mAutoLayout.addView(bangWordView);
+////            wordViewvector.add(bangWordView);
+//        }
+        Toast.makeText(BigBangActivity.this, "Waiting for Split Words...", Toast.LENGTH_LONG).show();
+        requestServe(line);
+    }
+
+    protected void requestServe(String text) {
+        HTTPRequest.getSplitChar(text, new IResponse() {
+            @Override
+            public void finish(final String[] words) {
+                if (words != null) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (String word : words) {
+                                BangWordView bangWordView = new BangWordView(getApplication(),word);
+                                mAutoLayout.addView(bangWordView);
+                            }
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void failure(final String errorMsg) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
 }
