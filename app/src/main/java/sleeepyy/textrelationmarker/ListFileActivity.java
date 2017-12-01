@@ -42,6 +42,7 @@ public class ListFileActivity extends ListActivity {
 
     }
 
+    // get File list
     private void initFileList() {
         File path = getFilesDir();
         Log.i("info", path.getAbsolutePath());
@@ -92,6 +93,7 @@ public class ListFileActivity extends ListActivity {
     }
 
 
+    //
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(ListFileActivity.this, ViewFileActivity.class);

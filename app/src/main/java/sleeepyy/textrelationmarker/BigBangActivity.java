@@ -155,6 +155,8 @@ public class BigBangActivity extends AppCompatActivity {
                 text_2 = "";
                 start_1 = 0;
                 start_2 = 0;
+                label_i = 0;
+                label_j = 0;
                 int count = mAutoLayout.getChildCount();
                 StringBuilder firstBuilder = new StringBuilder();
                 StringBuilder secondBuilder = new StringBuilder();
@@ -163,7 +165,7 @@ public class BigBangActivity extends AppCompatActivity {
                 for (int i = 0; i < count; i++) {
                     AppCompatCheckBox checkBox = (AppCompatCheckBox) mAutoLayout.getChildAt(i);
                     Log.i("check", String.valueOf(checkBox.isChecked()));
-                    if (lastCheckBox != null && !lastCheckBox.isChecked() && checkBox.isChecked()) {
+                    if (lastCheckBox != null && start_1 !=0 && !lastCheckBox.isChecked() && checkBox.isChecked() ) {
                         builder = secondBuilder;
                         if (start_2 == 0) start_2 = i;
                     }
@@ -225,7 +227,6 @@ public class BigBangActivity extends AppCompatActivity {
                                         for (int _i = 0; _i < count; _i++) {
                                             AppCompatCheckBox checkBox = (AppCompatCheckBox) mAutoLayout.getChildAt(_i);
                                             checkBox.setChecked(false);
-
                                         }
 
 

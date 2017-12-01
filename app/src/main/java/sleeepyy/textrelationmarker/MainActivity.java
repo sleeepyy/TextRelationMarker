@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createFiles();
+        // Open File
         Button openFileButton = findViewById(R.id.open_file_button);
         openFileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Open Url
         Button openUrlButton = findViewById(R.id.open_url_button);
         openUrlButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +77,52 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    // Prepare menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = this.getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        menu.removeItem(R.id.gb2312);
+        menu.removeItem(R.id.utf8);
+        menu.removeItem(R.id.adjust);
+        menu.removeItem(R.id.mark);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                doAbout();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void doAbout() {
+        Dialog dialog = new AlertDialog.Builder(MainActivity.this).setTitle(
+                R.string.aboutTitle).setMessage(R.string.aboutInfo)
+                .setPositiveButton(R.string.aboutOK,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialoginterface, int i) {
+                            }
+                        }).create();
+        dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+// init     Create Files to load.
     private void createFiles() {
         String[] fileNames = {"安倍晋三再次当选日本首相 第4次内阁于今夜启动.txt", "巴黎大师赛蒂姆险胜过关 8号种子吞完败出局.txt", "杜特尔特称愿与日加强关系 日媒：安倍露出满意表情.txt", "俄阿伊三国元首推动跨里海地区合作.txt"};
         String[] _texts = {"海外网11月1日电 日本第195次特别国会于当地时间11月1日召开，日本自民党总裁安倍晋三在当日下午举行的众参两院全体大会首相提名选举中被选为第98任首相，全体阁僚和党高层留任。1日晚间，安倍第4次内阁将正式启动，这是继1952年吉田茂担任首相以来，日本时隔65年将再次出现“第4次内阁”。由于修宪势力获得了远远超过修宪动议所需众院额定议席数的三分之二以上，包含宪法第9条在内的修宪问题将成为焦点。\n" +
@@ -88,17 +136,17 @@ public class MainActivity extends AppCompatActivity {
                 "对于选举之后的日本，国际社会最为关注的问题无疑是修宪前景。在新一届的日本国会中，自民、希望、维新各党对包括《宪法》第九条在内的修宪积极态度，公明党态度谨慎，立宪民主党则“反对修改第九条”，共产、社民两党也持守护第九条的立场。安倍今年5月发表修宪主张，称希望在宪法第9条中增加自卫队的内容，并给出了“2020年施行新宪法”的明确时间表。随着“修宪势力”可能在此次众议院选战后壮大，安倍领导的自民党正在考虑加速此进程。修改战后日本的“和平宪法”条款，即宣布日本“放弃战争”的宪法第9条，为日本将自卫队最终升级为军队、重获战争权利扫清道路。安倍欲使日本重获国家交战权和集体防卫权，复归“正常国家”地位。一旦失去“和平宪法”的束缚日本会走向何方，会对东亚局势造成什么样的冲击，中韩等国对此担忧加剧。\n" +
                 "\n" +
                 "据此前报道，31日，日本首相安倍晋三（自民党总裁）在该党高层会议上正式宣布，11月1日第四届安倍内阁启动后党内四大要职将全部留任。安倍在会上呼吁团结称，“不辜负国民的托付，一项一项切实兑现选举承诺十分重要。”四大要职以外的党高层除了议员退职和众院选举落选者外都将继续任用。关于修宪，自民党把最快于明年由国会提议纳入考虑。以在《宪法》第九条中写明自卫队存在为主的该党修宪草案拟最快在明年初提交给例行国会，以便朝野各党展开讨论。（编译/海外网 巩浩）",
-        "北京时间11月1日，2017赛季最后一项ATP大师赛、总奖金为450.7万欧元的劳力士巴黎大师赛展开了男单第二轮的争夺。赛会五号种子、奥地利人蒂姆在第二盘连续浪费三个赛点，才以6-4/6-7（3）/6-4险胜德国人高约维茨克；八号种子、西班牙人布斯塔4-6/1-6不敌法国老将马胡，晋级总决赛形势堪忧。\n" +
-                "\n" +
-                "蒂姆本来在开赛前宣布退赛专心备战总决赛，但是又意外的出现在巴黎大师赛签表中。奥地利人近来状态惨淡，美网之后的四站赛事仅仅拿到了一场胜利。高约维茨克世界排名第62位，德国人此前在法国梅兹拿下职业生涯首冠。两人此前两次交手各胜一场，最近一次是去年梅兹蒂姆两盘胜出。\n" +
-                "\n" +
-                "蒂姆在第三局浪费了两个破发点，他在第五局再度发起攻势破发得手。两人此后都没有送出破发点，五号种子以6-4先声夺人。第二盘鏖战至5-5平后，蒂姆在第11局完成关键破发。第12局他40-0手握三个赛点，却意外的连丢五分被对手回破带入抢七。高约维茨克手感正佳，抢七局一路领先7-3扳平。\n" +
-                "\n" +
-                "进入决胜盘，两人的发球局都表现的非常稳定，前八局没有送出破发点战至四平。第十局蒂姆抓住整盘唯一的破发机会，破发成功6-4拿到这场来之不易的胜利。全场比赛耗时126分钟，他在第三轮将迎战西班牙老将沃达斯科和美网亚军安德森之间的胜者。\n" +
-                "\n" +
-                "布斯塔目前世界排名第11位，这位美网打入四强的新面孔也是近况不佳，美网后总战绩为1胜3负。目前他的冠军积分在活跃球员中排在第八位，身后的安德森、波特罗等人来势汹汹入围形势并不明朗。马胡世界排名第111位，两人在今年美网有过交手，布斯塔直落三盘胜出。\n" +
-                "\n" +
-                "布斯塔开局之后取得优势，第三局破发之后保发3-1领先。马胡在第五局挽救破发点保发之后，第六局回破追平。第十局布斯塔虽然化解两个破发点追至平分，还是被对手破发4-6交出首盘胜利。第二盘马胡一上来就两次破发5-0遥遥领先，此后两人各自保发法国人以6-1击败对手晋级。他在第三轮的对手是塞尔维亚人克拉吉诺维奇，后者以6-4/6-4爆冷淘汰了十号种子、美国大炮奎雷伊。",
+                "北京时间11月1日，2017赛季最后一项ATP大师赛、总奖金为450.7万欧元的劳力士巴黎大师赛展开了男单第二轮的争夺。赛会五号种子、奥地利人蒂姆在第二盘连续浪费三个赛点，才以6-4/6-7（3）/6-4险胜德国人高约维茨克；八号种子、西班牙人布斯塔4-6/1-6不敌法国老将马胡，晋级总决赛形势堪忧。\n" +
+                        "\n" +
+                        "蒂姆本来在开赛前宣布退赛专心备战总决赛，但是又意外的出现在巴黎大师赛签表中。奥地利人近来状态惨淡，美网之后的四站赛事仅仅拿到了一场胜利。高约维茨克世界排名第62位，德国人此前在法国梅兹拿下职业生涯首冠。两人此前两次交手各胜一场，最近一次是去年梅兹蒂姆两盘胜出。\n" +
+                        "\n" +
+                        "蒂姆在第三局浪费了两个破发点，他在第五局再度发起攻势破发得手。两人此后都没有送出破发点，五号种子以6-4先声夺人。第二盘鏖战至5-5平后，蒂姆在第11局完成关键破发。第12局他40-0手握三个赛点，却意外的连丢五分被对手回破带入抢七。高约维茨克手感正佳，抢七局一路领先7-3扳平。\n" +
+                        "\n" +
+                        "进入决胜盘，两人的发球局都表现的非常稳定，前八局没有送出破发点战至四平。第十局蒂姆抓住整盘唯一的破发机会，破发成功6-4拿到这场来之不易的胜利。全场比赛耗时126分钟，他在第三轮将迎战西班牙老将沃达斯科和美网亚军安德森之间的胜者。\n" +
+                        "\n" +
+                        "布斯塔目前世界排名第11位，这位美网打入四强的新面孔也是近况不佳，美网后总战绩为1胜3负。目前他的冠军积分在活跃球员中排在第八位，身后的安德森、波特罗等人来势汹汹入围形势并不明朗。马胡世界排名第111位，两人在今年美网有过交手，布斯塔直落三盘胜出。\n" +
+                        "\n" +
+                        "布斯塔开局之后取得优势，第三局破发之后保发3-1领先。马胡在第五局挽救破发点保发之后，第六局回破追平。第十局布斯塔虽然化解两个破发点追至平分，还是被对手破发4-6交出首盘胜利。第二盘马胡一上来就两次破发5-0遥遥领先，此后两人各自保发法国人以6-1击败对手晋级。他在第三轮的对手是塞尔维亚人克拉吉诺维奇，后者以6-4/6-4爆冷淘汰了十号种子、美国大炮奎雷伊。",
                 "参考消息网11月1日报道 日媒称，菲律宾总统杜特尔特31日前往东京皇宫，拜会日本明仁天皇和皇后美智子，并讨论了两国间时而因历史问题而紧张的双边关系。\n" +
                         "\n" +
                         "据共同社10月31日报道，根据日本宫内厅发布的消息，这次会晤进行了约25分钟。在此期间，明仁天皇指出，在二战时期日本占领菲律宾的3年多时间里，有很多当地人失去了生命。\n" +
@@ -145,46 +193,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = this.getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        menu.removeItem(R.id.gb2312);
-        menu.removeItem(R.id.utf8);
-        menu.removeItem(R.id.adjust);
-        menu.removeItem(R.id.mark);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.about:
-                doAbout();
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void doAbout() {
-        Dialog dialog = new AlertDialog.Builder(MainActivity.this).setTitle(
-                R.string.aboutTitle).setMessage(R.string.aboutInfo)
-                .setPositiveButton(R.string.aboutOK,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(
-                                    DialogInterface dialoginterface, int i) {
-                            }
-                        }).create();
-        dialog.show();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
 }
