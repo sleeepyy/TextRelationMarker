@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 
 /**
+ * TextRelationMarker
  * Created by sleepy on 2017/11/28.
  */
 
@@ -59,6 +60,7 @@ public class ViewFileActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Toast.makeText(ViewFileActivity.this, "Read Mode", Toast.LENGTH_SHORT).show();
         adjust_page = findViewById(R.id.adjust_page);
         adjust_page.setVisibility(View.GONE);
 

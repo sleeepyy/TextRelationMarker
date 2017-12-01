@@ -18,6 +18,10 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 
+/**
+ * TextRelationMarker
+ * Created by sleepy on 2017/11/28.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

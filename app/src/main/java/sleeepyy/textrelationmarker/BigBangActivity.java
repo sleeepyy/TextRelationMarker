@@ -239,17 +239,6 @@ public class BigBangActivity extends AppCompatActivity {
                 });
                 markerDialog.show();
 
-//                JSONObject marker = new JSONObject();
-//                try {
-//                    marker.put("sentenceId", pointer);
-//                    marker.put("sentence", sentences.get(pointer));
-//                    marker.put("em1Text", text_1);
-//                    marker.put("em2Text", text_2);
-//
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-
             }
 
 
@@ -307,7 +296,7 @@ public class BigBangActivity extends AppCompatActivity {
 //            mAutoLayout.addView(bangWordView);
 ////            wordViewvector.add(bangWordView);
 //        }
-        Toast.makeText(BigBangActivity.this, "Waiting for Split Words...", Toast.LENGTH_LONG).show();
+        Toast.makeText(BigBangActivity.this, "Waiting for Split Words...", Toast.LENGTH_SHORT).show();
         requestServe(line);
     }
 

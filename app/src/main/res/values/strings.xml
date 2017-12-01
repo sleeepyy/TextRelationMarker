@@ -4,16 +4,14 @@
     <string name="code_utf8">UTF-8</string>
     <string name="code_gb2312">GB2312</string>
     <string name="about">About</string>
-    <string name="switch_code">点击Menu菜单切换合适编码</string>
     <string name="aboutTitle">Text Relation Marker</string>
     <string name="aboutInfo">User-Friendly Text Reader And Marker Designed By YH.</string>
     <string name="aboutOK">GOT IT</string>
     <string name="open_button">Open File</string>
-    <string name="open_url_button">Open Url</string>
+    <string name="open_url_button">Open  Url</string>
     <string name="add_size_button"> add size </string>
     <string name="minus_size_button">minus size</string>
     <string name="adjust">阅读设置</string>
-    <string name="init_dir">/storage/self/primary</string>
     <string name="mark">开始标记</string>
     <string name="adjust_done">Done</string>
     <string name="font">monospace</string>

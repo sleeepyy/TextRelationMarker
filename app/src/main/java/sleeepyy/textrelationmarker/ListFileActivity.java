@@ -31,9 +31,6 @@ import android.widget.Toast;
 public class ListFileActivity extends ListActivity {
 
     private List<File> fileNameList;
-    private String UrlKey = "url";
-    private Bundle bundle;
-    private String fileNameKey = "path";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +43,6 @@ public class ListFileActivity extends ListActivity {
     }
 
     private void initFileList() {
-//        File path = android.os.Environment.getRootDirectory();
-//        File path = new File(getString(R.string.init_dir));
         File path = getFilesDir();
         Log.i("info", path.getAbsolutePath());
 
@@ -100,12 +95,13 @@ public class ListFileActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(ListFileActivity.this, ViewFileActivity.class);
-        bundle = new Bundle();
+        Bundle bundle = new Bundle();
         File file = fileNameList.get(position);
         if (file.isDirectory()) {
             File[] f = file.listFiles();
             fill(f);
         } else {
+            String fileNameKey = "path";
             bundle.putString(fileNameKey, file.getAbsolutePath());
             intent.putExtras(bundle);
             startActivityForResult(intent, 0);
